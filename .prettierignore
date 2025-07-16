@@ -1,0 +1,7 @@
+.eslintrc.js
+docker-compose.yml
+Dockerfile
+*.md
+.prettierrc
+*.json
+vite.config.ts
