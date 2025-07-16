@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # The TypeScript Application Service
+  app:
+    build: . # Build the image from the Dockerfile in the current directory
+    container_name: ts_app_container
+
+  # The Nginx Service
+  nginx:
+    image: nginx:latest # Use the official Nginx image
+    container_name: nginx_proxy_container
+    ports:
+      # Map port 8080 on your local machine to port 80 in the Nginx container
+      - "8081:80"
+    volumes:
+      # Mount our custom nginx.conf into the container
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app # Tell Docker to start the 'app' service before this one
